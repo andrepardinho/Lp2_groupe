@@ -53,9 +53,53 @@ void preencheImgBranco(unsigned char img[640][480]) {
     }
 }
 
+// 7: Função para desenhar um círculo na imagem
+void drwCirc(unsigned char img[altura][largura], int x, int y, int rad, unsigned char pixel) {
 
+    switch(pixel){
 
+        case 1:
+            printf("\x1b[31m");
+        break;
 
+        case 2:
+            printf("\x1b[32m");
+        break;
+
+        case 3:
+            printf("\x1b[33m");
+        break;
+
+        case 4:
+            printf("\x1b[34m");
+        break;
+
+        case 5:
+            printf("\x1b[35m");
+        break;
+
+        case 6:
+            printf("\x1b[36m");
+        break;
+
+        case 7:
+            printf("\x1b[37m");
+        break;
+
+    }
+
+    for (int i = 0; i < altura; i++) {
+        for (int j = 0; j < largura; j++) {
+            if ((((j - x) * (j - x)) + ((i - y) * (i - y))) <= (rad * rad)) {
+                img[i][j] = 7;
+                printf("\x1b[40m%u", img[i][j]);
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+}
 
 
 // 9: Função para encontrar a maior intensidade de pixel na imagem
@@ -92,17 +136,17 @@ int pixelMin(unsigned char img[640][480]) {
 
 
 // 11: Função para calcular a média e o desvio padrão
-void calculardadosimagem(unsigned char img[LARGURA][ALTURA], double *media, double *desvioPadrao) {
+void calculardadosimagem(unsigned char img[largura][altura], double *media, double *desvioPadrao) {
     // Total de pixels na imagem
-    int totalPixels = LARGURA * ALTURA;
+    int totalPixels = largura * altura;
 
     // Variáveis para acumular a soma dos valores dos pixels e a soma dos quadrados dos valores dos pixels
     double soma = 0;
     double somaquadrados = 0;
 
     // Percorre cada pixel da imagem
-    for (int i = 0; i < ALTURA; i++) { // i representa a linha
-        for (int j = 0; j < LARGURA; j++) { // j representa a coluna
+    for (int i = 0; i < altura; i++) { // i representa a linha
+        for (int j = 0; j < largura; j++) { // j representa a coluna
             unsigned char pixel = img[i][j]; // Obtém o valor do pixel na posição [i][j]
             soma += pixel; // Acumula o valor do pixel
             somaquadrados += pixel * pixel; // Acumula o quadrado do valor do pixel
@@ -121,7 +165,7 @@ void calculardadosimagem(unsigned char img[LARGURA][ALTURA], double *media, doub
 }
 
 // 12: Função para gerar o histograma de cores
-void imgHistogram(unsigned char img[LARGURA][ALTURA], int hist[256]) {
+void imgHistogram(unsigned char img[largura][altura], int hist[256]) {
     // Inicializa o histograma com zeros
   // Desta forma o histograma é retornado na forma de um array de inteiros com 256 posições
     for (int i = 0; i < 256; i++) {
@@ -129,8 +173,8 @@ void imgHistogram(unsigned char img[LARGURA][ALTURA], int hist[256]) {
     }
 
     // Percorre cada pixel da imagem
-    for (int i = 0; i < ALTURA; i++) { // i representa a linha
-        for (int j = 0; j < LARGURA; j++) { // j representa a coluna
+    for (int i = 0; i < altura; i++) { // i representa a linha
+        for (int j = 0; j < largura; j++) { // j representa a coluna
             // Incrementa o contador correspondente ao valor de intensidade do pixel
             hist[img[i][j]]++;
         }

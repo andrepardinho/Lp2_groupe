@@ -39,5 +39,15 @@ int main() {
     printf("Pixel [0][0] apos preencheImgBranco: %u\n", img[0][0]);
     printf("Pixel [639][479] apos preencheImgBranco: %u\n", img[639][479]);
 
+    // 
+    unsigned char ibagem[altura][largura] = {0};
+    short int cor = 0;
+
+    printf("Insira sua cor desejada:\n1 - Vermelho;\n2 - Verde;\n3 - Amarelo;\n4 - Azul;\n5 - Magenta;\n6 - Ciano;\n7 - Branco.\n\n");
+    scanf("%hu", &cor);
+
+    drwCirc(ibagem, 300, 200, 50, cor);
+
+
     return 0;
 }
