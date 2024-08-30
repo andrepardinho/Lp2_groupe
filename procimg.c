@@ -1,5 +1,6 @@
 #include "procimg.h"
 #include <stdlib.h>
+#include <math.h>
 
 // 1: Função para gerar um pixel em tons de cinza com diferentes probabilidades
 unsigned char geraPixelCinza(int tipo) {

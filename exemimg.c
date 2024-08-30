@@ -39,7 +39,7 @@ int main() {
 
     // Exibe os resultados
     printf("\nMaior intensidade de pixel: %d\n", max);
-    printf("Menor intensidaade de pixel: %d\n", min);
+    printf("Menor intensidade de pixel: %d\n", min);
 
     return 0;
 }
