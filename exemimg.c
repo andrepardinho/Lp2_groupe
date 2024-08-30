@@ -15,10 +15,18 @@ int main() {
         }
     }
 
+    // 9 e 10: Obtém o valor máximo e mínimo dos pixels
+    int max = pixelMax(img);
+    int min = pixelMin(img);
+
+    // Exibe os resultados
+    printf("\nMaior intensidade de pixel: %d\n", max);
+    printf("Menor intensidade de pixel: %d\n\n", min);
+
     // Testa a função preencheImgCinza
     unsigned char pixel = geraPixelCinza(0); // Gera um valor de pixel com probabilidade uniforme
     preencheImgCinza(img, pixel);
-    printf("Pixel [0][0] aps preencheImgCinza: %u\n", img[0][0]);
+    printf("Pixel [0][0] apos preencheImgCinza: %u\n", img[0][0]);
     printf("Pixel [639][479] apos preencheImgCinza: %u\n", img[639][479]);
 
     // Testa a função preencheImgPreto
@@ -30,16 +38,6 @@ int main() {
     preencheImgBranco(img);
     printf("Pixel [0][0] apos preencheImgBranco: %u\n", img[0][0]);
     printf("Pixel [639][479] apos preencheImgBranco: %u\n", img[639][479]);
-
-
-
-    // 9 e 10: Obtém o valor máximo e mínimo dos pixels
-    int max = pixelMax(img);
-    int min = pixelMin(img);
-
-    // Exibe os resultados
-    printf("\nMaior intensidade de pixel: %d\n", max);
-    printf("Menor intensidade de pixel: %d\n", min);
 
     return 0;
 }
