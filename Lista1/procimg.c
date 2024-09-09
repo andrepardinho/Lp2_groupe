@@ -1,6 +1,7 @@
 #include "procimg.h"
 #include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
 
 // 1: Função para gerar um pixel em tons de cinza com diferentes probabilidades
 unsigned char geraPixelCinza(int tipo) {
@@ -49,6 +50,43 @@ void preencheImgBranco(unsigned char img[640][480]) {
     for (int i = 0; i < 640; i++) {
         for (int j = 0; j < 480; j++) {
             img[i][j] = 255;
+        }
+    }
+}
+
+// 5: Função que desenha uma reta dentro da imagem (Algoritmo de Bresenham)
+void drwLin(unsigned char img[largura][altura], int xA, int yA, int xB, int yB, unsigned char pixel){
+    int dx = abs(xB - xA);
+    int dy = abs(yB - yA);
+    int sx = (xA < xB) ? 1 : -1;
+    int sy = (yA < yB) ? 1 : -1;
+    int err = dx - dy;
+    int e2;
+
+    while (1) {
+        if (xA >= 0 && xA < largura && yA >= 0 && yA < altura) {
+            img[xA][yA] = pixel;
+        }
+
+        if (xA == xB && yA == yB) break;
+
+        e2 = 2 * err;
+        if (e2 > -dy) {
+            err -= dy;
+            xA += sx;
+        }
+        if (e2 < dx) {
+            err += dx;
+            yA += sy;
+        }
+    }
+}
+
+// 6: Função que desenha uma área retangular dentro da imagem
+void drwRect(unsigned char img[largura][altura], int x, int y, int larg, int alt, unsigned char pixel){
+    for (int i = x; i < x + larg && i < largura; i++) {
+        for (int j = y; j < y + alt && j < altura; j++) {
+            img[i][j] = pixel;
         }
     }
 }

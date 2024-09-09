@@ -10,6 +10,13 @@ void preencheImgCinza(unsigned char img[640][480], unsigned char pixel);
 void preencheImgPreto(unsigned char img[640][480]);
 void preencheImgBranco(unsigned char img[640][480]);
 
+// 5 e 6
+void drwLin(unsigned char img[largura][altura], int xA, int yA, int xB, int yB, unsigned char pixel);
+void drwRect(unsigned char img[largura][altura], int x, int y, int larg, int alt, unsigned char pixel);
+
+// 7
+void drwCirc(unsigned char img[altura][largura], int x, int y, int rad, unsigned char pixel);
+
 //9 e 10
 int pixelMax(unsigned char img[640][480]);
 int pixelMin(unsigned char img[640][480]);
