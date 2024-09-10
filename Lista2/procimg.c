@@ -124,14 +124,71 @@ int pixelMin_R(unsigned char img[480][640]) {
     return pixelMin_R_aux(img, 0, 0, 255);
 }
 
-//Q08
-//Q09
-//Q10
+
+// Q08: Função auxiliar para somar os elementos das linhas da matriz
+void somaPorLinhas_R_Aux(unsigned char img[480][640], int soma[480], int linha, int coluna, int somaLinha){
+
+    if(linha == 480){
+        return;
+    }
+
+    if(coluna == 640){
+        soma[linha] = somaLinha;
+        somaPorLinhas_R_Aux(img, soma, linha + 1, 0, 0);
+        return;
+    }
+
+    somaPorLinhas_R_Aux(img, soma, linha, coluna + 1, somaLinha + img[linha][coluna]);
+}
+
+void somaPorLinhas_R(unsigned char img[480][640], int soma[480]){
+    return somaPorLinhas_R_Aux(img, soma, 0, 0, 0);
+}
+
+
+// Q09: Função auxiliar para somar os elementos das colunas da matriz
+void somaPorColunas_R_Aux(unsigned char img[480][640], int soma[640], int linha, int coluna, int somaColuna){
+
+    if(coluna == 640){
+        return;
+    }
+
+    if(linha == 480){
+        soma[coluna] = somaColuna;
+        somaPorColunas_R_Aux(img, soma, 0, coluna + 1, 0);
+        return;
+    }
+
+    somaPorColunas_R_Aux(img, soma, linha + 1, coluna, somaColuna + img[linha][coluna]);
+}
+
+void somaPorColunas_R(unsigned char img[480][640], int soma[640]){
+    return somaPorColunas_R_Aux(img, soma, 0, 0, 0);
+}
+
+
+// Q10: Função auxiliar para somar os elementos da matriz
+int somaPorTotal_R_Aux(unsigned char img[480][640], int linha, int coluna, int somaTotal) {
+
+    if(linha == 480){
+        return somaTotal;
+    }   
+
+    if(coluna == 640){  
+        return somaPorTotal_R_Aux(img, linha + 1, 0, somaTotal);
+    }
+
+    return img[linha][coluna] + somaPorTotal_R_Aux(img, linha, coluna + 1, somaTotal);
+}
+
+int somaPorTotal_R(unsigned char img[480][640]){
+    return somaPorTotal_R_Aux(img, 0, 0, 0);
+}
 
 
 // Q11: Função auxiliar recursiva para contar pixels com uma intensidade específica
 int quantosPixelsNaInt_R_Aux(unsigned char img[480][640], unsigned char intensidade, int lin, int col) {
-    // Caso base: todas as linhas foram processadas uando todas as linhas foram processadas (lin >= 480), a função retorna 0, indicando que não há mais pixels a contar.
+    // Caso base: todas as linhas foram processadas. Quando todas as linhas foram processadas (lin >= 480), a função retorna 0, indicando que não há mais pixels a contar.
     if (lin >= 480) {
         return 0;
     }

@@ -32,8 +32,16 @@ int pixelMin_R_aux(unsigned char img[480][640], int linha, int coluna, int valor
 int pixelMin_R(unsigned char img[480][640]);
 
 //Q08
+void somaPorLinhas_R_Aux(unsigned char img[480][640], int soma[480], int linha, int coluna, int somaLinha);
+void somaPorLinhas_R(unsigned char img[480][640], int soma[480]);
+
 //Q09
+void somaPorColunas_R_Aux(unsigned char img[480][640], int soma[640], int linha, int coluna, int somaColuna);
+void somaPorColunas_R(unsigned char img[480][640], int soma[640]);
+
 //Q10
+int somaPorTotal_R_Aux(unsigned char img[480][640], int linha, int coluna, int somaTotal);
+int somaPorTotal_R(unsigned char img[480][640]);
 
 //Q11
 int quantosPixelsNaInt_R_Aux(unsigned char img[480][640], unsigned char intensidade, int lin, int col);
@@ -48,4 +56,4 @@ int quantosPixelsAcimaDeInt_R(unsigned char img[480][640], unsigned char intensi
 
 //Q14
 
-#endif // PROCIMG_H
+#endif
