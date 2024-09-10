@@ -1,3 +1,5 @@
+//teste alteração via github
+
 #include "procimg.h"
 #include <stdio.h>
 #include <stdlib.h>
