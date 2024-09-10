@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+float search = -0.5;
+
 
 // Função para gerar um pixel em tons de cinza com diferentes probabilidades
 unsigned char geraPixelCinza(int tipo) {
@@ -241,3 +243,15 @@ int quantosPixelsAcimaDeInt_R(unsigned char img[480][640], unsigned char intensi
 }
 
 //Q14:
+unsigned char pontoEquilibrio(unsigned char img[480][640], unsigned char intt) {
+
+  if(quantosPixelsNaInt_R(img, intt) != 0){
+
+    return intt;
+    }
+
+  search = (search >= 0.0) ? search + 0.5 : search - 0.5;
+  search *= (-1);
+
+  return pontoEquilibrio(img, intt + (int)search);
+}

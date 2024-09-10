@@ -93,3 +93,28 @@ int main() {
     return 0;
 }
 */
+
+
+/*
+// Q14
+int main() {
+
+unsigned char img[480][640];
+int Pmax, Pmin, QntPmax, QntPmin;
+float search = -0.5;
+
+  Pmax = pixelMax_R(img);
+  Pmin = pixelMin_R(img);
+  QntPmax = quantosPixelsNaInt_R(img, Pmax);
+  QntPmin = quantosPixelsNaInt_R(img, Pmin);
+
+  unsigned char PE;
+
+  if(search == -0.5)
+  PE = ((QntPmax * Pmax) + (QntPmin * Pmin) / (QntPmax + QntPmin));
+
+  pontoEquilibrio(img, PE);
+
+  return 0;
+}
+*/

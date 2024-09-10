@@ -55,5 +55,6 @@ int quantosPixelsAbaixoDeInt_R(unsigned char img[480][640], unsigned char intens
 int quantosPixelsAcimaDeInt_R(unsigned char img[480][640], unsigned char intensidade);
 
 //Q14
+unsigned char pontoEquilibrio(unsigned char img[480][640], unsigned char intt);
 
 #endif
