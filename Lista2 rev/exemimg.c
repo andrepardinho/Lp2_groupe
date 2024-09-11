@@ -67,17 +67,52 @@ int main() {
 
     // QUESTAO 7: Teste da função pixelMin_R, retorna o pixel de menor intensidade
     // Preenche a matriz com um valor constante (reutiliza o for da Q06) e coloca um valor menor em uma posição específica
-
     img[ALTURA - 1][LARGURA - 1] = 50;     
     int pixel_min = pixelMin_R(img);
 
     printf("Pixel de menor intensidade: %d\n", pixel_min);
 
+    // QUESTAO 08, 09 e 10: Teste das funcoes somaPorLinhas_R, somaPorColunas_R e somaPorTotal_R
+    int somaL[ALTURA];
+    int somaC[LARGURA];
+    int somaTotal;
 
-    // QUESTAO 8: Teste da função somaPorLinhas_R
-    // QUESTAO 9: Teste da função somaPorColunas_R
-    // QUESTAO 10: Teste da função somaPorTotal_R
+    // Inicializa a imagem com valores para teste
+    for (int i = 0; i < ALTURA; i++) {
+        for (int j = 0; j < LARGURA; j++) {
+            img[i][j] = 1; // Preenche com 1
+        }
+    }
 
+    somaPorLinhas_R(img, somaL);
+    somaPorColunas_R(img, somaC);
+    somaTotal = somaPorTotal_R(img);
+
+    // Verificação
+    int erroLinha = 0;
+    for (int i = 0; i < ALTURA; i++) {
+        if (somaL[i] != LARGURA) {
+            erroLinha = 1; 
+            break;
+        }
+    }
+
+    if (erroLinha) printf("\nErro nas somas das linhas.\n");
+    else printf("\nSoma das linhas correta.\n");
+
+    int erroColuna = 0;
+    for (int i = 0; i < LARGURA; i++) {
+        if (somaC[i] != ALTURA) {
+            erroColuna = 1;
+            break;
+        }
+    }
+
+    if(erroColuna) printf("Erro nas somas das colunas.\n");
+    else printf("Soma das colunas correta.\n");
+
+    if (somaTotal != ALTURA * LARGURA) printf("\nErro na soma total.\n");
+    else printf("Soma total: %d (Resultado correto)\n", somaTotal);
 
     // QUESTOES 11, 12 e 13: Preenche a imagem com valores de exemplo (aqui, todos os pixels com valor 128)
     for(int i = 0; i < ALTURA; i++) {
@@ -87,8 +122,8 @@ int main() {
     }
 
     unsigned char intensidade = 128; // Intensidade teste
-    img[0][0] = 100; // Altera um pixel abaixo da intensidade teste
-    img[0][1] = 150; // Altera um pixel acima da intensidade teste
+    img[0][0] = intensidade - 1; // Altera p/ um pixel abaixo da intensidade teste
+    img[0][1] = intensidade + 1; // Altera p/ um pixel acima da intensidade teste
 
 
     // Testa a função para contar pixels com intensidade específica
