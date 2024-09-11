@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define LARGURA 64
 #define ALTURA 48
+#define LARGURA 64
 
 // Função para gerar um pixel em tons de cinza com diferentes probabilidades
 unsigned char geraPixelCinza(int tipo) {
