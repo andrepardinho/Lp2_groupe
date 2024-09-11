@@ -52,6 +52,28 @@ int main() {
     }
     printf("\n");
 
+    // QUESTAO 6: Teste da função pixelMax_R, retorna o pixel de maior intensidade
+    // Preenche a matriz com um valor constante e coloca um valor maior em uma posição específica
+    for (int i = 0; i < ALTURA; i++) {
+        for (int j = 0; j < LARGURA; j++) {
+            img[i][j] = 100;
+        }
+    }
+
+    img[ALTURA - 1][LARGURA - 1] = 200;
+    int pixel_max = pixelMax_R(img);
+
+    printf("\nPixel de maior intensidade: %d\n", pixel_max);
+
+    // QUESTAO 7: Teste da função pixelMin_R, retorna o pixel de menor intensidade
+    // Preenche a matriz com um valor constante (reutiliza o for da Q06) e coloca um valor menor em uma posição específica
+
+    img[ALTURA - 1][LARGURA - 1] = 50;     
+    int pixel_min = pixelMin_R(img);
+
+    printf("Pixel de menor intensidade: %d\n", pixel_min);
+
+
     return 0;
 }
 

@@ -1,0 +1,72 @@
+# Compiled object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Executable files
+*.out
+*.exe
+
+# Static and shared libraries
+*.lib
+*.a
+*.so
+*.dll
+*.dylib
+
+# Debug files
+*.dSYM/
+*.stackdump
+*.core
+
+# Compiled Dynamic Libraries
+*.lo
+*.la
+
+# IDE specific
+*.vscode/
+*.idea/
+*.swp
+
+# Build directories
+/build/
+/bin/
+/debug/
+/release/
+
+# Generated files
+*.log
+*.tmp
+*.d
+*.gcno
+*.gcda
+*.gch
+*.dep
+*.map
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Autotools files
+/configure
+/config.log
+/config.status
+/autom4te.cache/
+/aclocal.m4
+/compile
+/configure.scan
+/libtool
+/ltmain.sh
+/missing
+/dependency-files/
+
+# Others
+tags
+*.orig
+*.rej
