@@ -2,7 +2,7 @@
 
 
 int main () {
-    int nLin = 480, nCol = 640;
+    int nLin = 4, nCol = 6;
     
     // Q01: Aloca imagem em tons de cinza
     imgGray picture1 = alocaImagemGray(nLin, nCol);
@@ -30,6 +30,7 @@ int main () {
 
     //Libera memoria alocada para a imagem em tons de cinza
     freeImagemGray(&picture1);
+
 
     // Q02: Aloca imagem em RGB
     imgRGB picture2 = alocaImagemRGB(nLin, nCol);
@@ -135,6 +136,205 @@ int main () {
 
     freeImagemRGB(&picture4);
 
+
+    // Q05: Preenche a imagem em tons de cinza com o valor 0 (preto)
+    printf("\nQuestao 5:\n");
+
+    imgGray picture5 = alocaImagemGray(nLin, nCol);
+    if (picture5.img == NULL) {
+        printf("\nErro ao alocar memoria para img Gray\n");
+    }
+
+    if (geraImgGrayB(picture5)) {
+        printf("Imagem Gray preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem Gray\n");
+    }
+
+    error = 0;
+    for (int i = 0; i < nLin; i++) {
+        for(int j = 0; j < nCol; j++) {
+            if (picture5.img[i][j] != 0) {
+                printf("Erro ao atribuir valor ao pixel na posição [%d, %d]\n", i, j);
+                error = 1;
+                break;
+            }
+        }
+    }
+    if (!error) {
+        printf("Todos os pixels foram preenchidos com valor 0 (preto)\n");
+    }
+
+    freeImagemGray(&picture5);
+
+
+    // Q06: Preenche a imagem em RGB com o valor (0, 0, 0) (preto)
+    printf("\nQuestao 6:\n");
+
+    imgRGB picture6 = alocaImagemRGB(nLin, nCol);
+    if (picture6.img == NULL) {
+        printf("\nErro ao alocar memoria para img RGB\n");
+    }
+
+    if (geraImgRGBB(picture6)) {
+        printf("Imagem RGB preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem RGB\n");
+    }
+
+    error = 0;
+    for (int i = 0; i < nLin; i++) {
+        for(int j = 0; j < nCol; j++) {
+            if (picture6.img[i][j].R != 0 || picture6.img[i][j].G != 0 || picture6.img[i][j].B != 0) {
+                printf("Erro ao atribuir valor ao pixel na posição [%d, %d]\n", i, j);
+                error = 1;
+                break;
+            }
+        }
+    }
+    if (!error) {
+        printf("Todos os pixels foram preenchidos com R=0, G=0, B=0 (preto)\n");
+    }
+
+    freeImagemRGB(&picture6);
+
+
+    // Q07: Preenche a imagem em tons de cinza com o valor 255 (branco)
+    printf("\nQuestao 7:\n");
+
+    imgGray picture7 = alocaImagemGray(nLin, nCol);
+    if (picture7.img == NULL) {
+        printf("\nErro ao alocar memoria para img Gray\n");
+    }
+
+    if (geraImgGrayW(picture7)) {
+        printf("Imagem Gray preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem Gray\n");
+    }
+
+    error = 0;
+    for (int i = 0; i < nLin; i++) {
+        for(int j = 0; j < nCol; j++) {
+            if (picture7.img[i][j] != 255) {
+                printf("Erro ao atribuir valor ao pixel na posição [%d, %d]\n", i, j);
+                error = 1;
+                break;
+            }
+        }
+    }
+    if (!error) {
+        printf("Todos os pixels foram preenchidos com valor 255 (branco)\n");
+    }
+
+    freeImagemGray(&picture7);
+
+
+    // Q08: Preenche a imagem em RGB com o valor (255, 255, 255) (branco)
+    printf("\nQuestao 8:\n");
+
+    imgRGB picture8 = alocaImagemRGB(nLin, nCol);
+    if (picture8.img == NULL) {
+        printf("\nErro ao alocar memoria para img RGB\n");
+    }
+
+    if (geraImgRGBW(picture8)) {
+        printf("Imagem RGB preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem RGB\n");
+    }
+
+    error = 0;
+    for (int i = 0; i < nLin; i++) {
+        for(int j = 0; j < nCol; j++) {
+            if (picture8.img[i][j].R != 255 || picture8.img[i][j].G != 255 || picture8.img[i][j].B != 255) {
+                printf("Erro ao atribuir valor ao pixel na posição [%d, %d]\n", i, j);
+                error = 1;
+                break;
+            }
+        }
+    }
+    if (!error) {
+        printf("Todos os pixels foram preenchidos com R=255, G=255, B=255 (branco)\n");
+    }
+
+    freeImagemRGB(&picture8);
+
+
+    // Q09: Preenche a imagem em tons de cinza com valores aleatórios
+    printf("\nQuestao 9:\n");
+
+    imgGray picture9 = alocaImagemGray(nLin, nCol);
+    if (picture9.img == NULL) {
+        printf("\nErro ao alocar memoria para img Gray\n");
+    }
+
+    int tipo = 1; // Defina o tipo conforme necessário
+    if (geraImgGray(picture9, tipo)) {
+        printf("Imagem Gray preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem Gray\n");
+    }
+
+    error = 0;
+    for (int i = 0; i < nLin; i++) {
+        for(int j = 0; j < nCol; j++) {
+            // Verifica se o valor do pixel está dentro do intervalo esperado (0-255)
+            if (picture9.img[i][j] < 0 || picture9.img[i][j] > 255) {
+                printf("Erro ao atribuir valor ao pixel na posição [%d, %d]\n", i, j);
+                error = 1;
+                break;
+            }
+        }
+    }
+    if (!error) {
+        printf("Todos os pixels foram preenchidos com valores aleatorios dentro do intervalo 0-255\n");
+    }
+
+    freeImagemGray(&picture9);
+    
+
+    // Q10: Preenche a imagem em RGB com valores aleatórios
+    printf("\nQuestao 10:\n");
+
+    imgRGB picture10 = alocaImagemRGB(nLin, nCol);
+    if (picture10.img == NULL) {
+        printf("\nErro ao alocar memoria para img RGB\n");
+    }
+
+    tipo = 1; // Defina o tipo conforme necessário (rever depois)
+    if (geraImgRGB(picture10, tipo)) {
+        printf("Imagem RGB preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem RGB\n");
+    }
+
+    error = 0;
+    for (int i = 0; i < nLin; i++) {
+        for(int j = 0; j < nCol; j++) {
+            // Verifica se o valor do pixel está dentro do intervalo esperado (0-255)
+            if (picture10.img[i][j].R < 0 || picture10.img[i][j].R > 255 ||
+                picture10.img[i][j].G < 0 || picture10.img[i][j].G > 255 ||
+                picture10.img[i][j].B < 0 || picture10.img[i][j].B > 255) {
+                printf("Erro ao atribuir valor ao pixel na posição [%d, %d]\n", i, j);
+                error = 1;
+                break;
+            }
+        }
+    }
+    if (!error) {
+        printf("Todos os pixels foram preenchidos com valores aleatórios dentro do intervalo 0-255\n");
+    }
+
+    freeImagemRGB(&picture10);
+
+
     // Q11: Pixel maximo e minimo
     printf("\nQuestao 11:\n");
     
@@ -153,6 +353,158 @@ int main () {
     printf("Menor pixel: %d\n", minPixel);
 
     freeImagemGray(&imagem);
+
+
+    // Q12: Encontra a maior e menor intensidade de pixel em uma imagem RGB
+    printf("\nQuestao 12:\n");
+
+    imgRGB picture12 = alocaImagemRGB(nLin, nCol);
+    if (picture12.img == NULL) {
+        printf("\nErro ao alocar memoria para img RGB\n");
+    }
+
+    tipo = 1; // Defina o tipo conforme necessário
+    if (geraImgRGB(picture12, tipo)) {
+        printf("Imagem RGB preenchida com sucesso\n");
+    } else {
+        printf("Erro ao preencher imagem RGB\n");
+    }
+
+    tRGB maxPixelRGB = pixelRGBMax(picture12);
+    tRGB minPixelRGB = pixelRGBMin(picture12);
+
+    printf("Maior intensidade de pixel - R: %d, G: %d, B: %d\n", maxPixelRGB.R, maxPixelRGB.G, maxPixelRGB.B);
+    printf("Menor intensidade de pixel - R: %d, G: %d, B: %d\n", minPixelRGB.R, minPixelRGB.G, minPixelRGB.B);
+
+    freeImagemRGB(&picture12);
+
+
+    // Q13: Calcula a soma dos elementos de cada linha e coluna em uma imagem em tons de cinza
+    printf("\nQuestao 13:\n");
+    
+    imgGray picture13 = alocaImagemGray(nLin, nCol);
+    if (picture13.img == NULL) {
+        printf("\nErro ao alocar memoria para img Gray\n");
+    }
+    
+    tipo = 1; // Defina o tipo conforme necessário
+    if (geraImgGray(picture13, tipo)) {
+        printf("Imagem Gray preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem Gray\n");
+    }
+    
+    int* somaLinhas = somaPorLinhasGray(picture13);
+    int* somaColunas = somaPorColunasGray(picture13);
+    
+    if (somaLinhas != NULL && somaColunas != NULL) {
+        printf("Soma dos elementos de cada linha:\n");
+        for (int i = 0; i < nLin; i++) {
+            printf("Linha %d: %d\n", i, somaLinhas[i]);
+        }
+    
+        printf("Soma dos elementos de cada coluna:\n");
+        for (int j = 0; j < nCol; j++) {
+            printf("Coluna %d: %d\n", j, somaColunas[j]);
+        }
+    
+        free(somaLinhas);
+        free(somaColunas);
+    } else {
+        printf("Erro ao calcular a soma dos elementos\n");
+    }
+    
+    freeImagemGray(&picture13);
+
+
+    // Q14: Calcula a soma dos elementos de cada linha e coluna em cada canal de cor em uma imagem RGB
+    printf("\nQuestao 14:\n");
+
+    imgRGB picture14 = alocaImagemRGB(nLin, nCol);
+    if (picture14.img == NULL) {
+        printf("\nErro ao alocar memoria para img RGB\n");
+    }
+
+    tipo = 1; // Defina o tipo conforme necessário
+    if (geraImgRGB(picture14, tipo)) {
+        printf("Imagem RGB preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem RGB\n");
+    }
+
+    tRGB* somaLinhasRGB = somaPorLinhasRGB(picture14);
+    tRGB* somaColunasRGB = somaPorColunasRGB(picture14);
+
+    if (somaLinhasRGB != NULL && somaColunasRGB != NULL) {
+        printf("Soma dos elementos de cada linha (R, G, B):\n");
+        for (int i = 0; i < nLin; i++) {
+            printf("Linha %d: R=%d, G=%d, B=%d\n", i, somaLinhasRGB[i].R, somaLinhasRGB[i].G, somaLinhasRGB[i].B);
+        }
+
+        printf("Soma dos elementos de cada coluna (R, G, B):\n");
+        for (int j = 0; j < nCol; j++) {
+            printf("Coluna %d: R=%d, G=%d, B=%d\n", j, somaColunasRGB[j].R, somaColunasRGB[j].G, somaColunasRGB[j].B);
+        }
+
+        free(somaLinhasRGB);
+        free(somaColunasRGB);
+    } else {
+        printf("Erro ao calcular a soma dos elementos\n");
+    }
+
+    freeImagemRGB(&picture14);
+
+
+    // Q15: Calcula a soma total dos elementos de uma imagem em tons de cinza
+    printf("\nQuestao 15:\n");
+
+    imgGray picture15 = alocaImagemGray(nLin, nCol);
+    if (picture15.img == NULL) {
+        printf("\nErro ao alocar memoria para img Gray\n");
+    }
+
+    tipo = 1; // Defina o tipo conforme necessário
+    if (geraImgGray(picture15, tipo)) {
+        printf("Imagem Gray preenchida com sucesso\n");
+    }
+    else {
+        printf("Erro ao preencher imagem Gray\n");
+    }
+
+    int somaTotal = somaTotalGray(picture15);
+
+    if (somaTotal != -1) {
+        printf("Soma total dos elementos da imagem: %d\n", somaTotal);
+    } else {
+        printf("Erro ao calcular a soma total dos elementos\n");
+    }
+
+    freeImagemGray(&picture15);
+
+
+    // Q16: Calcula a soma dos elementos por canal em uma imagem RGB
+    printf("\nQuestao 16:\n");
+
+    imgRGB picture16 = alocaImagemRGB(nLin, nCol);
+    if (picture16.img == NULL) {
+        printf("\nErro ao alocar memoria para img RGB\n");
+    }
+
+    tipo = 1; // Defina o tipo conforme necessário
+    if (geraImgRGB(picture16, tipo)) {
+        printf("Imagem RGB preenchida com sucesso\n");
+    } else {
+        printf("Erro ao preencher imagem RGB\n");
+    }
+
+    tRGB somaRGB = somaTotalRGB(picture16);
+
+    printf("Soma total dos pixels - R: %d, G: %d, B: %d\n", somaRGB.R, somaRGB.G, somaRGB.B);
+
+    freeImagemRGB(&picture16);
+
 
     // Q17: Contagem de pixels com intensidade específica
     printf("\nQuestao 17:\n");

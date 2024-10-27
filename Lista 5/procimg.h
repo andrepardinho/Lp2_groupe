@@ -50,11 +50,47 @@ int geraImgGrayFull(imgGray picture, uchar pixel);
 // Q04: Função que preenche uma imagem em RGB com um valor de pixel
 int geraImgRGBFull(imgRGB img, tRGB pixel);
 
+// Q05: Preenche a imagem em tons de cinza com o valor 0 (preto)
+int geraImgGrayB(imgGray img);
+
+// Q06: Preenche a imagem em RGB com o valor (0, 0, 0) (preto)
+int geraImgRGBB(imgRGB img);
+
+// Q07: Preenche a imagem em tons de cinza com o valor 255 (branco)
+int geraImgGrayW(imgGray img);
+
+// Q08: Preenche a imagem em RGB com o valor (255, 255, 255) (branco)
+int geraImgRGBW(imgRGB img);
+
+// Q09: Preenche a imagem em tons de cinza com valores aleatórios
+int geraImgGray(imgGray img, int tipo);
+
+// Q10: Preenche a imagem em RGB com valores aleatórios
+int geraImgRGB(imgRGB img, int tipo);
+
 // Q11: 
 // Função para encontrar o pixel de maior intensidade em uma imagem cinza
 int pixelGrayMax(imgGray img);
 // Função para encontrar o pixel de menor intensidade em uma imagem cinza
 int pixelGrayMin(imgGray img);
+
+// Q12: Retorna a maior e menor intensidade de pixel em uma imagem RGB
+tRGB pixelRGBMax(imgRGB img);
+tRGB pixelRGBMin(imgRGB img);
+
+// Q13: Retorna a soma dos elementos de cda linha da imagem.
+int* somaPorLinhasGray(imgGray img);
+int* somaPorColunasGray(imgGray img);
+
+// Q14: Retorna a soma dos elementos de cada linha e coluna em uma imagem
+tRGB* somaPorLinhasRGB(imgRGB img);
+tRGB* somaPorColunasRGB(imgRGB img);
+
+// Q15: Retorna a soma total dos elementos de uma imagem.
+int somaTotalGray(imgGray img);
+
+// Q16: Retorna a soma total dos elementos de uma imagem por canal
+tRGB somaTotalRGB(imgRGB img);
 
 // Q17: Função para contar quantos pixels possuem uma intensidade específica em uma imagem em tons de cinza
 int quantosPixelsGrayNaInt(imgGray img, uchar inten);
