@@ -135,6 +135,60 @@ int main () {
 
     freeImagemRGB(&picture4);
 
+    // Q11: Pixel maximo e minimo
+    printf("\nQuestao 11:\n");
+    
+    imgGray imagem = alocaImagemGray(2, 2); // Imagem 2x2
+    
+    // Preencher a imagem com valores simples
+    imagem.img[0][0] = 10;
+    imagem.img[0][1] = 10;
+    imagem.img[1][0] = 30;
+    imagem.img[1][1] = 40;
+
+    int maxPixel = pixelGrayMax(imagem);
+    printf("Maior pixel: %d\n", maxPixel);
+
+    int minPixel = pixelGrayMin(imagem);
+    printf("Menor pixel: %d\n", minPixel);
+
+    freeImagemGray(&imagem);
+
+    // Q17: Contagem de pixels com intensidade específica
+    printf("\nQuestao 17:\n");
+
+    imgGray imagem2 = alocaImagemGray(2, 2); // Imagem 2x2
+    
+    // Preencher a imagem com valores simples
+    imagem2.img[0][0] = 10;
+    imagem2.img[0][1] = 20;
+    imagem2.img[1][0] = 10; 
+    imagem2.img[1][1] = 30;
+
+    int quantidade = quantosPixelsGrayNaInt(imagem2, 10);
+
+    printf("Quantidade de pixels com intensidade 10: %d", quantidade);
+    if (quantidade  == 2) printf(" (Correto)\n");
+    else printf(" (Incorreto)\n");
+
+    freeImagemGray(&imagem2);
+
+    // Q18: Contagem de pixels RGB com intensidade específica
+    printf("\nQuestao 18:\n");
+    
+    imgRGB imagemRGB = alocaImagemRGB(2, 2); // Imagem 2x2
+    
+    // Preencher a imagem com valores RGB simples
+    imagemRGB.img[0][0] = (tRGB){255, 0, 0}; // Vermelho
+    imagemRGB.img[0][1] = (tRGB){0, 255, 0}; // Verde
+    imagemRGB.img[1][0] = (tRGB){255, 0, 0}; // Vermelho
+    imagemRGB.img[1][1] = (tRGB){0, 0, 255}; // Azul
+
+    tRGB corDesejada = {255, 0, 0}; // Cor que queremos contar (vermelho)
+    quantidade = quantosPixelsRGBNaInt(imagemRGB, corDesejada);
+    printf("Quantidade de pixels vermelhos: %d", quantidade); // Deve imprimir 2
+    if (quantidade == 2) printf(" (Correto)\n");
+    else printf(" (Incorreto)\n");
 
     return 0;
 }

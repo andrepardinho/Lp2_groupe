@@ -110,3 +110,65 @@ int geraImgRGBFull(imgRGB img, tRGB pixel) {
 
     return true;
 }
+
+
+// Q11: Função para encontrar o pixel de maior intensidade em uma imagem cinza
+int pixelGrayMax(imgGray img) {
+    if (img.img == NULL) return -1; // Verifica se a imagem é nula
+
+    int max = 0; // Inicializa o máximo
+    for (int i = 0; i < img.nLin; i++) {
+        for (int j = 0; j < img.nCol; j++) {
+            if (img.img[i][j] > max) {
+                max = img.img[i][j]; // Atualiza o máximo se encontrar um valor maior
+            }
+        }
+    }
+    return max; // Retorna o valor máximo encontrado
+}
+
+// Função para encontrar o pixel de menor intensidade em uma imagem cinza
+int pixelGrayMin(imgGray img) {
+    if (img.img == NULL) return -1; // Verifica se a imagem é nula
+
+    int min = 255;// Inicializa o mínimo
+    for (int i = 0; i < img.nLin; i++) {
+        for (int j = 0; j < img.nCol; j++) {
+            if (img.img[i][j] < min) {
+                min = img.img[i][j]; // Atualiza o mínimo se encontrar um valor menor
+            }
+        }
+    }
+    return min; // Retorna o valor mínimo encontrado
+}
+
+// Q17: Função para contar quantos pixels possuem uma intensidade específica em uma imagem em tons de cinza
+int quantosPixelsGrayNaInt(imgGray img, uchar inten) {
+    int count = 0;
+
+    for (int i = 0; i < img.nLin; i++) {
+        for (int j = 0; j < img.nCol; j++) {
+            if (img.img[i][j] == inten) {
+                count++; // Incrementa o contador se o pixel tiver a intensidade desejada
+            }
+        }
+    }
+    return count; // Retorna a quantidade de pixels com a intensidade específica
+}
+
+
+// Q18: Função para contar quantos pixels possuem uma intensidade específica em uma imagem em RGB
+ int quantosPixelsRGBNaInt(imgRGB img, tRGB inten) {
+    int count = 0;
+
+    for (int i = 0; i < img.nLin; i++) {
+        for (int j = 0; j < img.nCol; j++) {
+            if (img.img[i][j].R == inten.R &&
+                img.img[i][j].G == inten.G &&
+                img.img[i][j].B == inten.B) {
+                count++; // Incrementa o contador se o pixel RGB tiver a intensidade desejada
+            }
+        }
+    }
+    return count; // Retorna a quantidade de pixels com a intensidade RGB específica
+}

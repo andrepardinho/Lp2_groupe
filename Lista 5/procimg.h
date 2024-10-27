@@ -50,5 +50,17 @@ int geraImgGrayFull(imgGray picture, uchar pixel);
 // Q04: Função que preenche uma imagem em RGB com um valor de pixel
 int geraImgRGBFull(imgRGB img, tRGB pixel);
 
+// Q11: 
+// Função para encontrar o pixel de maior intensidade em uma imagem cinza
+int pixelGrayMax(imgGray img);
+// Função para encontrar o pixel de menor intensidade em uma imagem cinza
+int pixelGrayMin(imgGray img);
+
+// Q17: Função para contar quantos pixels possuem uma intensidade específica em uma imagem em tons de cinza
+int quantosPixelsGrayNaInt(imgGray img, uchar inten);
+
+// Q18: Função para contar quantos pixels possuem uma intensidade específica em uma imagem RGB
+int quantosPixelsRGBNaInt(imgRGB img, tRGB inten);
+
 
 #endif
