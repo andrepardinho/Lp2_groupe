@@ -181,17 +181,17 @@ unsigned char geraPixelGrey(int tipo) {
 
     if (tipo < 0) {
         // Intensidades mais escuras (0-127) têm maior probabilidade
-        if (valorAleatorio < 128) {
-            return (unsigned char)(valorAleatorio / 2); // Aumenta a probabilidade de valores menores
+        if (valorAleatorio < 192) {
+            return (unsigned char)(rand() % 128);
         } else {
-            return (unsigned char)(valorAleatorio);
+            return (unsigned char)(128 + rand() % 128);
         }
     } else if (tipo > 0) {
         // Intensidades mais claras (128-255) têm maior probabilidade
-        if (valorAleatorio >= 128) {
-            return (unsigned char)(128 + (valorAleatorio / 2)); // Aumenta a probabilidade de valores maiores
+        if (valorAleatorio < 192) {
+            return (unsigned char)(128 + rand() % 128); // Aumenta a probabilidade de valores maiores
         } else {
-            return (unsigned char)(valorAleatorio);
+            return (unsigned char)(rand() % 128);
         }
     } else {
         // Todas as intensidades têm a mesma probabilidade
