@@ -294,13 +294,12 @@ int* somaPorLinhasGray(imgGray img) {
     }
 
     // Aloca um array para armazenar a soma de cada linha
-    int* somaLinhas = (int*)malloc(img.nLin * sizeof(int));
+    int* somaLinhas = (int*)calloc(img.nLin, sizeof(int));
     if (somaLinhas == NULL) {
         return NULL;
     }
 
     for (int i = 0; i < img.nLin; i++) {
-        somaLinhas[i] = 0;
         for (int j = 0; j < img.nCol; j++) {
             somaLinhas[i] += img.img[i][j]; // Soma os valores dos pixels
         }
@@ -315,13 +314,12 @@ int* somaPorColunasGray(imgGray img) {
     }
 
     // Aloca um array para armazenar a soma de cada coluna
-    int* somaColunas = (int*)malloc(img.nCol * sizeof(int));
+    int* somaColunas = (int*)calloc(img.nCol, sizeof(int));
     if (somaColunas == NULL) {
         return NULL;
     }
 
     for (int j = 0; j < img.nCol; j++) {
-        somaColunas[j] = 0;
         for (int i = 0; i < img.nLin; i++) {
             somaColunas[j] += img.img[i][j]; // Soma os valores dos pixels
         }
