@@ -45,7 +45,7 @@ imgGray alocaImagemGray(int nLin, int nCol) {
         return picture;
     }
     
-    //Mapear a matriz guardada como array em picture._img. no array de ponteiros em picture.img
+    //Mapear a imagem guardada como array em picture._img. no array de ponteiros em picture.img
     for (int i = 0; i < nLin; i++) {
         picture.img[i] = &picture._img[i * nCol];
     }

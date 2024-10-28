@@ -2,7 +2,7 @@
 
 
 int main () {
-    int nLin = 4, nCol = 6;
+    int nLin = 48, nCol = 64;
     
     // Q01: Aloca imagem em tons de cinza
     imgGray picture1 = alocaImagemGray(nLin, nCol);
@@ -33,31 +33,29 @@ int main () {
 
 
     // Q02: Aloca imagem em RGB
+    printf("\nQuestao 2:\n");
     imgRGB picture2 = alocaImagemRGB(nLin, nCol);
     if (picture2.img == NULL) {
-        printf("\nErro ao alocar memoria para img RGB\n");
+        printf("Erro ao alocar memoria para img RGB\n");
         // return 1;
     }
     else {
-        printf("\nImagem RGB alocada com sucesso\n");
+        printf("Imagem RGB alocada com sucesso\n");
     }
 
-    for (int i = 0; i < nLin; i++) {
-        for(int j = 0; j < nCol; j++) {
-            picture2.img[i][j].R = 11;
-            picture2.img[i][j].G = 22;
-            picture2.img[i][j].B = 33;
-        }
+    //utilizar array unidimensional para acessar os pixels
+    for (int i = 0; i < nLin * nCol; i++) {
+        picture2._img[i].R = 11;
+        picture2._img[i].G = 22;
+        picture2._img[i].B = 33;
     }
 
     error = 0;
-    for (int i = 0; i < nLin; i++) {
-        for(int j = 0; j < nCol; j++) {
-            if (picture2.img[i][j].R != 11 || picture2.img[i][j].G != 22 || picture2.img[i][j].B != 33) {
-                printf("Erro ao atribuir valor ao pixel na posição [%d, %d]\n", i, j);
-                error = 1;
-                // return 1;
-            }
+    for (int i = 0; i < nLin * nCol; i++) {
+        if (picture2._img[i].R != 11 || picture2._img[i].G != 22 || picture2._img[i].B != 33) {
+            printf("Erro ao atribuir valor ao pixel na posicao %d\n", i);
+            error = 1;
+            break;
         }
     }
 
@@ -431,43 +429,43 @@ int main () {
     freeImagemGray(&picture13);
 
 
-    // Q14: Calcula a soma dos elementos de cada linha e coluna em cada canal de cor em uma imagem RGB
-    printf("\nQuestao 14:\n");
+    // // Q14: Calcula a soma dos elementos de cada linha e coluna em cada canal de cor em uma imagem RGB
+    // printf("\nQuestao 14:\n");
 
-    imgRGB picture14 = alocaImagemRGB(nLin, nCol);
-    if (picture14.img == NULL) {
-        printf("\nErro ao alocar memoria para img RGB\n");
-    }
+    // imgRGB picture14 = alocaImagemRGB(nLin, nCol);
+    // if (picture14.img == NULL) {
+    //     printf("\nErro ao alocar memoria para img RGB\n");
+    // }
 
-    tipo = 1; // Defina o tipo conforme necessário
-    if (geraImgRGB(picture14, tipo)) {
-        printf("Imagem RGB preenchida com sucesso\n");
-    }
-    else {
-        printf("Erro ao preencher imagem RGB\n");
-    }
+    // tipo = 1; // Defina o tipo conforme necessário
+    // if (geraImgRGB(picture14, tipo)) {
+    //     printf("Imagem RGB preenchida com sucesso\n");
+    // }
+    // else {
+    //     printf("Erro ao preencher imagem RGB\n");
+    // }
 
-    tRGB* somaLinhasRGB = somaPorLinhasRGB(picture14);
-    tRGB* somaColunasRGB = somaPorColunasRGB(picture14);
+    // tRGB* somaLinhasRGB = somaPorLinhasRGB(picture14);
+    // tRGB* somaColunasRGB = somaPorColunasRGB(picture14);
 
-    if (somaLinhasRGB != NULL && somaColunasRGB != NULL) {
-        printf("Soma dos elementos de cada linha (R, G, B):\n");
-        for (int i = 0; i < nLin; i++) {
-            printf("Linha %d: R=%d, G=%d, B=%d\n", i, somaLinhasRGB[i].R, somaLinhasRGB[i].G, somaLinhasRGB[i].B);
-        }
+    // if (somaLinhasRGB != NULL && somaColunasRGB != NULL) {
+    //     printf("Soma dos elementos de cada linha (R, G, B):\n");
+    //     for (int i = 0; i < nLin; i++) {
+    //         printf("Linha %d: R=%d, G=%d, B=%d\n", i, somaLinhasRGB[i].R, somaLinhasRGB[i].G, somaLinhasRGB[i].B);
+    //     }
 
-        printf("Soma dos elementos de cada coluna (R, G, B):\n");
-        for (int j = 0; j < nCol; j++) {
-            printf("Coluna %d: R=%d, G=%d, B=%d\n", j, somaColunasRGB[j].R, somaColunasRGB[j].G, somaColunasRGB[j].B);
-        }
+    //     printf("Soma dos elementos de cada coluna (R, G, B):\n");
+    //     for (int j = 0; j < nCol; j++) {
+    //         printf("Coluna %d: R=%d, G=%d, B=%d\n", j, somaColunasRGB[j].R, somaColunasRGB[j].G, somaColunasRGB[j].B);
+    //     }
 
-        free(somaLinhasRGB);
-        free(somaColunasRGB);
-    } else {
-        printf("Erro ao calcular a soma dos elementos\n");
-    }
+    //     free(somaLinhasRGB);
+    //     free(somaColunasRGB);
+    // } else {
+    //     printf("Erro ao calcular a soma dos elementos\n");
+    // }
 
-    freeImagemRGB(&picture14);
+    // freeImagemRGB(&picture14);
 
 
     // Q15: Calcula a soma total dos elementos de uma imagem em tons de cinza
