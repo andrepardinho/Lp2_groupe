@@ -29,10 +29,10 @@ typedef struct {
     int nLin, nCol;
 } imgRGB;
 
-//Estrutura para armazenar somas que ultrapassam o valor 255
-typedef struct {
-    int R, G, B;
-} tRGB_int;
+// // Estrutura para armazenar somas que ultrapassam o valor 255
+// typedef struct {
+//     int R, G, B;
+// } tRGB_int;
 
 struct imagens {
     imgGray img;
@@ -89,14 +89,14 @@ int* somaPorLinhasGray(imgGray img);
 int* somaPorColunasGray(imgGray img);
 
 // Q14: Retorna a soma dos elementos de cada linha e coluna em uma imagem
-tRGB_int* somaPorLinhasRGB(imgRGB img);
-tRGB_int* somaPorColunasRGB(imgRGB img);
+tRGB* somaPorLinhasRGB(imgRGB img);
+tRGB* somaPorColunasRGB(imgRGB img);
 
 // Q15: Retorna a soma total dos elementos de uma imagem.
 int somaTotalGray(imgGray img);
 
 // Q16: Retorna a soma total dos elementos de uma imagem por canal
-tRGB_int somaTotalRGB(imgRGB img);
+tRGB somaTotalRGB(imgRGB img);
 
 // Q17: Função para contar quantos pixels possuem uma intensidade específica em uma imagem em tons de cinza
 int quantosPixelsGrayNaInt(imgGray img, uchar inten);

@@ -447,8 +447,8 @@ int main () {
         }
     }
 
-    tRGB_int* somaLinhasRGB = somaPorLinhasRGB(picture14);
-    tRGB_int* somaColunasRGB = somaPorColunasRGB(picture14);
+    tRGB* somaLinhasRGB = somaPorLinhasRGB(picture14);
+    tRGB* somaColunasRGB = somaPorColunasRGB(picture14);
     
     error = 0;
     for (int i = 0; i < nLin; i++) {
@@ -516,7 +516,7 @@ int main () {
         }
     }
 
-    tRGB_int somaRGB = somaTotalRGB(picture16);
+    tRGB somaRGB = somaTotalRGB(picture16);
 
     printf("Soma total dos canais - R: %d, G: %d, B: %d", somaRGB.R, somaRGB.G, somaRGB.B);
     if (somaRGB.R == nLin * nCol && somaRGB.G == nLin * nCol && somaRGB.B == nLin * nCol) printf(" (Correta)\n");
