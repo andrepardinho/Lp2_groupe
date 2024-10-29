@@ -438,34 +438,41 @@ int main () {
         printf("\nErro ao alocar memoria para img RGB\n");
     }
 
-    tipo = 1; // Defina o tipo conforme necessário
-    if (geraImgRGB(picture14, tipo)) {
-        printf("Imagem RGB preenchida com sucesso\n");
-    }
-    else {
-        printf("Erro ao preencher imagem RGB\n");
-    }
 
-    tRGB* somaLinhasRGB = somaPorLinhasRGB(picture14);
-    tRGB* somaColunasRGB = somaPorColunasRGB(picture14);
-
-    if (somaLinhasRGB != NULL && somaColunasRGB != NULL) {
-        printf("Soma dos elementos de cada linha (R, G, B):\n");
-        for (int i = 0; i < nLin; i++) {
-            printf("Linha %d: R=%d, G=%d, B=%d\n", i, somaLinhasRGB[i].R, somaLinhasRGB[i].G, somaLinhasRGB[i].B);
-        }
-
-        printf("Soma dos elementos de cada coluna (R, G, B):\n");
+    for (int i = 0; i < nLin; i++) {
         for (int j = 0; j < nCol; j++) {
-            printf("Coluna %d: R=%d, G=%d, B=%d\n", j, somaColunasRGB[j].R, somaColunasRGB[j].G, somaColunasRGB[j].B);
+            picture14.img[i][j].R = 1;
+            picture14.img[i][j].G = 1;
+            picture14.img[i][j].B = 1;
         }
-
-        free(somaLinhasRGB);
-        free(somaColunasRGB);
-    } else {
-        printf("Erro ao calcular a soma dos elementos\n");
     }
 
+    tRGB_int* somaLinhasRGB = somaPorLinhasRGB(picture14);
+    tRGB_int* somaColunasRGB = somaPorColunasRGB(picture14);
+    
+    error = 0;
+    for (int i = 0; i < nLin; i++) {
+        if (somaLinhasRGB[i].R != picture14.nCol || somaLinhasRGB[i].G != picture14.nCol || somaLinhasRGB[i].B != picture14.nCol) {
+            printf("Erro ao calcular a soma dos elementos da linha %d\n", i);
+            error = 1;
+            break;
+        }
+    }
+    if (!error) printf("Soma dos elementos de cada linha: OK!.\n");
+    printf("Exemplo de soma na linha 0: R=%d, G=%d, B=%d\n", somaLinhasRGB[0].R, somaLinhasRGB[0].G, somaLinhasRGB[0].B);
+
+    error = 0;
+    for (int i = 0; i < nCol; i++) {
+        if (somaColunasRGB[i].R != picture14.nLin || somaColunasRGB[i].G != picture14.nLin || somaColunasRGB[i].B != picture14.nLin) {
+            printf("Erro ao calcular a soma dos elementos da coluna %d\n", i);
+            error = 1;
+            break;
+        }
+    }
+    if (!error) printf("Soma dos elementos de cada coluna: OK!.\n");
+    printf("Exemplo de soma na coluna 0: R=%d, G=%d, B=%d\n", somaColunasRGB[0].R, somaColunasRGB[0].G, somaColunasRGB[0].B);
+
+    free(somaLinhasRGB); free(somaColunasRGB);
     freeImagemRGB(&picture14);
 
 
@@ -501,16 +508,19 @@ int main () {
         printf("\nErro ao alocar memoria para img RGB\n");
     }
 
-    tipo = 1; // Defina o tipo conforme necessário
-    if (geraImgRGB(picture16, tipo)) {
-        printf("Imagem RGB preenchida com sucesso\n");
-    } else {
-        printf("Erro ao preencher imagem RGB\n");
+    for (int i = 0; i < nLin; i++) {
+        for (int j = 0; j < nCol; j++) {
+            picture16.img[i][j].R = 1;
+            picture16.img[i][j].G = 1;
+            picture16.img[i][j].B = 1;
+        }
     }
 
-    tRGB somaRGB = somaTotalRGB(picture16);
+    tRGB_int somaRGB = somaTotalRGB(picture16);
 
-    printf("Soma total dos pixels - R: %d, G: %d, B: %d\n", somaRGB.R, somaRGB.G, somaRGB.B);
+    printf("Soma total dos canais - R: %d, G: %d, B: %d", somaRGB.R, somaRGB.G, somaRGB.B);
+    if (somaRGB.R == nLin * nCol && somaRGB.G == nLin * nCol && somaRGB.B == nLin * nCol) printf(" (Correta)\n");
+    else printf(" (Incorreta)\n");
 
     freeImagemRGB(&picture16);
 

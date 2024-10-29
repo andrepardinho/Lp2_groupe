@@ -329,13 +329,13 @@ int* somaPorColunasGray(imgGray img) {
 }
 
 // Q14: Retorna a soma dos elementos de cada linha e coluna em uma imagem
-tRGB* somaPorLinhasRGB(imgRGB img) {
+tRGB_int* somaPorLinhasRGB(imgRGB img) {
     if (img.img == NULL || img._img == NULL) {
         return NULL; // Retorna NULL se a imagem não foi alocada corretamente
     }
 
     // Aloca um array para armazenar a soma de cada linha
-    tRGB* somaLinhas = (tRGB*)malloc(img.nLin * sizeof(tRGB));
+    tRGB_int* somaLinhas = (tRGB_int*)malloc(img.nLin * sizeof(tRGB_int));
     if (somaLinhas == NULL) {
         return NULL;
     }
@@ -356,13 +356,13 @@ tRGB* somaPorLinhasRGB(imgRGB img) {
     return somaLinhas;
 }
 
-tRGB* somaPorColunasRGB(imgRGB img) {
+tRGB_int* somaPorColunasRGB(imgRGB img) {
     if (img.img == NULL || img._img == NULL) {
         return NULL; // Retorna NULL se a imagem não foi alocada corretamente
     }
 
     // Aloca um array para armazenar a soma de cada coluna
-    tRGB* somaColunas = (tRGB*)malloc(img.nCol * sizeof(tRGB));
+    tRGB_int* somaColunas = (tRGB_int*)malloc(img.nCol * sizeof(tRGB_int));
     if (somaColunas == NULL) {
         return NULL;
     }
@@ -401,8 +401,8 @@ int somaTotalGray(imgGray img) {
 }
 
 // Q16: Retorna a soma total dos elementos de uma imagem por canal
-tRGB somaTotalRGB(imgRGB img) {
-    tRGB soma = {0, 0, 0};
+tRGB_int somaTotalRGB(imgRGB img) {
+    tRGB_int soma = {0, 0, 0};
     for (int i = 0; i < img.nLin; i++) {
         for (int j = 0; j < img.nCol; j++) {
             soma.R += img.img[i][j].R;
